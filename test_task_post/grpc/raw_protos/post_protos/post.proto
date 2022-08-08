@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package post_protos;
+
+option go_package = "grpc/genprotos/post_protos";
+
+import "google/protobuf/empty.proto";
+
+service PostService {
+    rpc GetOpenApiGRPC(google.protobuf.Empty) returns (PostResponse){}
+}
+
+message PostParams {
+    uint64 ID = 1;
+    uint64 UserID = 2;
+    string Title = 3;
+    string Body = 4;
+}
+message PostResponse {
+    repeated PostParams ArrMessage = 1;
+}

@@ -1,0 +1,160 @@
+definitions:
+  rest.OpenApi:
+    properties:
+      body:
+        type: string
+      title:
+        type: string
+      user_id:
+        description: ID     int    `json:"id"`
+        type: integer
+    type: object
+  views.R:
+    properties:
+      data: {}
+      error_code:
+        type: integer
+      error_note:
+        type: string
+      status:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: API for delete
+      parameters:
+      - description: ID To Delete
+        in: query
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/views.R'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/views.R'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/views.R'
+      summary: Delete
+      tags:
+      - TestTask
+  /get:
+    get:
+      consumes:
+      - application/json
+      description: API for Get
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/views.R'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/views.R'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/views.R'
+      summary: Get
+      tags:
+      - TestTask
+  /getall:
+    get:
+      consumes:
+      - application/json
+      description: API for Get
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/views.R'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/views.R'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/views.R'
+      summary: GetAll
+      tags:
+      - TestTask
+  /getone:
+    get:
+      consumes:
+      - application/json
+      description: API for Get
+      parameters:
+      - description: id for finding post
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/views.R'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/views.R'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/views.R'
+      summary: GetOne
+      tags:
+      - TestTask
+  /update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: API for update
+      parameters:
+      - description: Updated Parameters
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/rest.OpenApi'
+      - description: ID To Update
+        in: query
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/views.R'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/views.R'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/views.R'
+      summary: Update
+      tags:
+      - TestTask
+swagger: "2.0"

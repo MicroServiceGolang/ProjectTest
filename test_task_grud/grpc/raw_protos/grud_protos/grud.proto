@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package grud_protos;
+
+option go_package = "grpc/genprotos/grud_protos";
+
+import "google/protobuf/empty.proto";
+
+service GrudService {
+    rpc GetOneGrpc(IDParam) returns (GrudParams){}
+    rpc GetAllGrpc(google.protobuf.Empty) returns (GrudResponse){}
+    rpc UpdateGrpc(GrudParams) returns (BooleanResponse){}
+    rpc DeleteGrpc(IDParam) returns (BooleanResponse){}
+}
+
+message GrudParams {
+    uint64 ID = 1;
+    uint64 UserID = 2;
+    string Title = 3;
+    string Body = 4;
+}
+message GrudResponse {
+    repeated GrudParams ArrMessage = 1;
+}
+
+message IDParam {
+    uint64 ID = 1;
+}
+
+message BooleanResponse {
+    bool Result = 1;
+}
